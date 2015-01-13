@@ -1,0 +1,71 @@
+<ion-view>
+
+    <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+	  <button class="button button-clear" ng-click="subTitileBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+      <h1 class="title">{{appTitle}}</h1>
+      <div class="buttons">
+          <button class="button button-clear" ng-click="goHome()"><i class="icon ion-ios7-home-outline"></i></button>
+          <button class="button button-clear" ng-click="switchAppEditor()"><i class="icon ion-ios7-compose-outline"></i></button>
+      </div>  
+  	</ion-header-bar>	
+
+  	 <ion-content style="padding:1% 25% 2% 25%;" style="background-image:url(img/bg2.png);background-size:100% 100%">
+      <div style="padding:2% 2% 2% 2%;">
+
+        <p ng-hide="showfloat">
+          <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_fb.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_twitter.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail1.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </p>
+	  	
+    	  <ul class="list" ng-hide="AppEditor">
+            <div class="item item-divider item-button-right" align="center">
+              {{chapterTitle}}
+              <button class="button button-assertive button-clear" ng-click="buttonAppwallgoFun();" ng-show="buttonAppWall"><i class="icon"><img src="img/coments.png" style="width:25px;height:25px;"/></i></button>
+            </div>
+    		    <li ng-repeat="item in elementArray" type="item-text-wrap" class="item item-button-right" ng-click="subTitClickFtn(item.id,item.title);">
+            
+              <h2 style="color:black;">{{item.title}}</h2>
+             
+              
+              <div class="buttons" ng-show="AppEditor">
+                <button class="button button-assertive button-outline" ng-click="deleteButton(item.id)"><i class="icon ion-trash-a"></i></button>
+                
+              </div>
+            </li>
+        </ul>
+        
+        <div ng-show="AppEditor">
+        <ul class="list" >
+            <div class="item item-divider" align="center">
+              {{chapterTitle}}
+            </div>
+            <li ng-repeat="item in elementArray" type="item-text-wrap" class="item item-button-right" >
+            
+              <h2 style="color:black;">{{item.title}}</h2>
+             
+              
+              <div class="buttons" ng-show="AppEditor">
+                <button class="button button-assertive button-outline" ng-click="deleteContent(item.id)"><i class="icon ion-trash-a"></i></button>
+              </div>
+            </li>
+        </ul>
+        <div class="row" >
+          <div class="col col-50"></div>
+          <div class="col col-50">
+            <button class="button button-balanced" ng-click="newContentGo();">+New Content</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+	</ion-content>
+    <div align="center" style="position:fixed;bottom: 0;right:45%;" ng-show="showfloat">
+        <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396343749_facebook_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396344405_twitter_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+         <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </div>
+</ion-view>

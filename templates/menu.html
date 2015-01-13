@@ -1,0 +1,43 @@
+<ion-view >
+    
+    <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+        <button class="button button-clear" style="left:0%;" ng-click="listViewBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+        
+        <h1 class="title">Add App</h1>
+        
+    </ion-header-bar>
+    
+     <ion-content style="padding:1% 25% 2% 25%;"  id="scrollable" style="background-image:url(img/bg2.png);background-size:100% 100%;" >
+        
+        <div style="padding:5% 5% 5% 5%;">
+            <div align="center">
+                <img src="img/home icon.png"/>
+              <br />
+            <button class="button button-block button-positive" ng-click="createAppFtn();">Create New App</button>
+            </div>
+           
+            <div style="margin:auto;width:100%;">
+                <img src="img/line1.png" style="width:100%;height:auto;">
+            </div>
+            
+            <div align="center">
+                <img src="img/import.png" style="width:100px;"/>
+            </div>
+            <input type="textarea" style="padding: 10px;background-image:url(img/text-box.png);background-size:100% 100%;" placeholder="App Key" ng-model="appcreate.appkeys" id="appkeys" />
+            
+            <br />
+            
+            <div style="margin:auto;width:80%;">
+                <img src="img/line.png" style="width:100%;height:auto;">
+            </div>
+            
+            <br />
+            
+            <button class="button button-block button-positive" ng-click="addAppFtn();">Add New Key</button>
+            <br />
+            
+        </div>
+        
+    </ion-content>
+    
+</ion-view >

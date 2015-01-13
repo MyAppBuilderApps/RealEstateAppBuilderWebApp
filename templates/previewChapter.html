@@ -1,0 +1,139 @@
+<ion-view>
+    <ion-side-menus>
+        
+        <ion-side-menu-content>
+            <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                <button class="button button-icon icon ion-navicon" ng-click="toggleLeft()"></button>
+                <h1 class="title">{{appTitle}}</h1>
+                <div class="buttons">
+                    <button class="button button-clear" ng-click="goHome()"><i class="icon ion-ios7-home-outline"></i></button>
+                    <button class="button button-clear" ng-click="switchAppEditor()"><i class="icon ion-ios7-compose-outline"></i></button>
+                </div>
+            </ion-header-bar>
+             <ion-content style="padding:1% 25% 2% 25%;">
+                <div style="padding:2% 2% 2% 2%;">
+
+                    <p ng-hide="showfloat">
+          <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_fb.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_twitter.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail1.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </p>        
+                    
+                    <ion-list ng-hide="AppEditor">
+                        
+                        <div class="item item-divider item-button-right" align="center" >
+                            {{appTitle}}
+                            <button class="button button-assertive button-clear" ng-click="appwallgoFun();"><i class="icon"><img src="img/coments.png" style="width:25px;height:25px;"/></i></button>
+                        </div>
+                        
+                        <li ng-repeat="item in items" type="item-text-wrap" class="item item-avatar item-button-right" ng-click="chapterClickFtn(item.id,item.title);">
+                            <img src="{{item.image}}" >
+                                <h2 style="color:black;">{{item.title}}</h2>
+                                </li>
+                        
+                    </ion-list>
+                    
+                    <ion-list ng-show='AppEditor' show-reorder='AppEditor' show-delete="AppEditor" >
+                        <div class="item item-divider item-button-right" align="center">
+                            {{appTitle}}
+                        </div>
+                        <ion-item ng-href="#/{{item.id}}/editButton" ng-repeat="item in items | filter:position" class="item-avatar item-button-right" >
+                            <img ng-src="{{item.image}}">
+                                
+                                <h2>{{item.title}}</h2>
+                                <ion-delete-button class="ion-trash-a" ng-click='deleteButton(item.id,item.title)'></ion-delete-button>
+                                <ion-reorder-button on-reorder="moveItem(item, $fromIndex, $toIndex)">
+                                    <i class="icon " ><img src="img/btn_drag.png" style="width:30px;height:30px;"/></i>
+                                </ion-reorder-button>
+                                </ion-item>
+                    </ion-list>
+                    
+                    <div class="row" ng-show="AppEditor">
+                        <div class="col col-50"></div>
+                        <div class="col col-50">
+                            <button class="button button-balanced" ng-click="newChapterGo();">+New Listing</button>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+                
+                
+            </ion-content>
+            <div align="center" style="position:fixed;bottom: 0;right:45%;" ng-show="showfloat">
+        <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396343749_facebook_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396344405_twitter_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+         <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </div>
+        </ion-side-menu-content>
+        
+        <ion-side-menu side="left">
+            <ion-view >
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                    <button class="button button-clear" style="left:0%;" ng-click="listViewBack();"><i class="icon ion-log-out"></i></button>
+                    <!--<button class="button button-clear button-assertive"  ng-click="gridCallFtn();"><img src="img/grid-view.png" style="margin-top:15%;width:25px;height:25px;"/></button>-->
+                    <h1 class="title">Realtors</h1>
+                    <div class="buttons">
+                        <button class="button button-clear" ng-click="createBook();"><i class="icon ion-ios7-paper-outline"></i></button>
+                        <button class="button button-clear" ng-click="EditBook();"><i class="icon ion-ios7-compose-outline"></i></button>
+                    </div>
+                </ion-header-bar >
+                 <ion-content>
+                    
+                    <ion-list ng-hide="AppEditor">
+                        
+                        <ion-item ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left" style="color:white;" ng-click="listViewClickFtn(item.api_key,item.title);">
+                            
+                            <img src="{{item.splash_image}}" >
+                                <h2 style="color:black;">{{item.title}}</h2>
+                                
+                                <!--<ion-option-button ng-click="previewApp(item.api_key,item.title)" >
+                                 <img src="img/preview.png" style="width:35px;margin-top:50%;"/>
+                                 </ion-option-button>-->
+                                
+                                <ion-option-button class="button button-calm button-outline" ng-click="editApp(item.api_key,item.title,item.description,item.splash_image)" >
+                                    <!--<img src="img/edit.png" style="width:35px;margin-top:50%;" />--><i class="icon ion-edit" style="margin-top:50%;"></i>
+                                </ion-option-button>
+                                
+                                <ion-option-button class="button button-assertive button-outline" ng-click="deleteApp(item.api_key,item)" >
+                                    <!--<img src="img/close.png" style="width:35px;margin-top:50%;"/>--><i class="icon ion-trash-a" style="margin-top:50%;"></i>
+                                </ion-option-button>
+                                </ion-item>
+                        
+                    </ion-list>
+                    
+                    
+                    <ul class="list" ng-show="AppEditor">
+                        
+                        <li ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left item-button-right" style="color:white;" >
+                            
+                            <img src="{{item.splash_image}}" >
+                                <h2 style="color:black;">{{item.title}}</h2>
+                                
+                                <div class="buttons" style="padding:0px; margin:0px;">
+                                    <button class="button button-assertive button-outline" ng-click="deleteApp(item.api_key,item)" style="padding:0px; margin:0px;"><i class="icon ion-trash-a"></i></button>
+                                    <button class="button  button-calm button-outline" ng-click="editApp(item.api_key,item.title,item.description,item.splash_image)" style="padding:0px; margin-right:0px;"><i class="icon ion-edit"></i></button>
+                                </div>
+                                </li>
+                        
+                    </ul>
+                    
+                </ion-content>
+            </ion-view>
+            
+            
+
+        </ion-side-menu>
+        
+    </ion-side-menus>
+  	
+
+
+</ion-view>
+
+
+

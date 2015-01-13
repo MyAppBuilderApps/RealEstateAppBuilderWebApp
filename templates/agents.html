@@ -1,0 +1,49 @@
+<ion-view>
+  <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+      <button class="button button-clear" ng-click="AgentBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+      <h1 class="title">Agents List</h1>
+  </ion-header-bar>
+   <ion-content style="padding:1% 25% 2% 25%;" >
+
+  <!--<div class="list" ng-repeat="agent in agents" style="padding:0px;margin:0px;">
+                    
+                    <div class="item item-button-right" style="padding:0px;">
+                        <!--<label class="checkbox" style="padding:4px;">
+                            <input type="checkbox" checklist-model="addAgent.id" checklist-value="agent.id" >
+                                </label>
+                        <button class="button button-clear" ng-click="editagent(agent.id,agent.avatar,agent.fullname,agent.email,agent.phone)">
+                            <i class="icon ion-edit"></i>
+                        </button>
+                        
+                        <div class="row" style="padding-top:8px;">
+                            <div class="col" style="font-size:16px;padding:0px;">
+                                <img src={{agent.avatar}} style="width:60px; height:60px;"/>
+                            </div>
+                            <div class="col col-75" style="font-size:16px;padding:0px;">
+                                <div class="item item-text-wrap" style="font-size:16px;padding:5px;">
+                                    <i class="icon ion-person"><img src="img/split.png"/> {{agent.fullname}}</i>
+                                </div>
+                                <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                                    <i class="icon ion-email"><img src="img/split.png"/> {{agent.email}}</i>
+                                </div>
+                                <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                                    <i class="icon ion-ios7-telephone"><img src="img/split.png"/> {{agent.phone}}</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+                <div ng-repeat="agent in agents" ng-click="showdetails(agent.avatar,agent.fullname,agent.email,agent.phone);" align="center" style="width:33.33%; padding:1%;float:left; position:relative;">
+                        
+                        <img class="item item-divider" src="{{agentavatar(agent.avatar)}}" style="padding:1%; border-radius:4px;width:90px;height:90px;">
+                            
+                            <div class="item item-divider" style="opacity: 0.7;padding-top:0px;padding-bottom:0px;width:94px;height:40px; font-size:16px; padding:1%; align:center;border-radius:4px;">
+                                {{agent.fullname}}
+                            </div>
+                            
+                            </div>
+
+  </ion-content>
+  
+</ion-view>

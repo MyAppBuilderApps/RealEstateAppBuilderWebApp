@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <link href="lib/css/ionic.css" rel="stylesheet">
+        <!--<link href="http://build.myappbuilder.com/assets/application-preview-3bd96cf20f55b4926dd7fc1dcd68eca6.css" media="screen" rel="stylesheet" type="text/css" />-->
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/ng-tags-input.css">
+        <title>Realtors - 2</title>
+    </head>
+
+    <body ng-app="iBook" animation="slide-left-right">
+
+        
+
+      <ion-nav-view></ion-nav-view>
+        
+
+       <!--<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cordova_plugins.js"></script> -->
+        <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.15/angular.js" data-semver="1.2.15"></script>
+        <script src="lib/js/ionic.bundle.js"></script>
+        <!--<script src="http://build.myappbuilder.com/assets/application-preview-b4e3a09e83dad6e52da60d3aad3fd808.js" type="text/javascript"></script>-->
+
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <!--<script type="text/javascript" src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>-->
+        <script type="text/javascript" src="js/tinymce.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/skin.min.css">
+        <script type="text/javascript" src="js/tinymce.js"></script>
+        <script type="text/javascript" src="js/openfb.js"></script>
+        <script type="text/javascript" src="js/jsOAuth-1.3.6.js"></script>
+        <script type="text/javascript" src="js/sanitize.js"></script>
+         <script type="text/javascript" src="js/ng-tags-input.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/checklist-model.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+        <script type="text/javascript" src="js/CDVVideo.js"></script>
+
+        <style>
+            
+            .sampletitle {
+                display: -webkit-box;
+                -webkit-line-clamp: 2; /* number of lines to show */
+                -webkit-box-orient: vertical;
+                word-wrap: break-word !important;white-space: normal !important;
+                font-size: 14px;
+                margin: 0 25px;
+                line-height: 1.5em;
+                height: 3em;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                width: 82%;
+            }
+        
+        .doubleline {
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+            -webkit-box-orient: vertical;
+            word-wrap: break-word !important;white-space: normal !important;
+            font-size: 14px;
+            margin: 0 10px;
+            line-height: 1.5em;
+            height: 3em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 82%;
+        }
+        
+        .pos_fixed {
+            position: fixed;
+            bottom: 0px;
+            margin-left:25%;
+            margin-right:25%;
+            /*left:70%;
+            margin-left:-160px;
+            right: 35px;*/
+            color: red;
+        }
+        
+            </style>
+
+    </body>
+
+    <script id="editContent.html" type="text/ng-template">
+      <ion-nav-view></ion-nav-view>
+    </script>
+
+    <script id="editBook.html" type="text/ng-template">
+      <ion-view >
+
+        <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+            <button class="button button-clear" ng-click="addBookBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+            <h1 class="title">Edit App</h1>
+            
+        </ion-header-bar>
+
+         <ion-content style="padding:1% 25% 2% 25%;"  id="scrollable" style="background-image:url(img/bg2.png);background-size:100% 100%;" >
+          <br />
+          
+          <div style="padding:2% 2% 2% 2%;">
+            
+            <div class="list">
+              <div class="item item-thumbnail-right">
+                <img id="imageShow1" src=""  />
+                <h2>Current App Image</h2>
+              </div>
+            </div>
+        
+        
+            <div style="margin:auto;width:80%;">
+                <img src="img/line.png" style="width:100%;height:auto;">
+            </div>
+            <br />
+            <div style="margin:auto;width:40%;">
+              
+                <div class="file-input-wrapper" >
+                  <button class="btn-file-input"></button>
+                  <input type="file" id="bookImage" />
+                </div>
+              
+            </div>
+            <br />
+            <input type="text" id="gridBookTitle" ng-model="appcreate.gridBookTitle" placeholder="Enter Real Estate Title" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+            <br />
+            
+            <textarea style="padding: 10px;background-image:url(img/text-box.png);background-size:100% 100%;" ng-model="appcreate.gridBookDesc" placeholder="Info/Description" id="gridBookDesc" ></textarea>
+            
+            <br />
+            <ion-toggle ng-model="appcreate.fssi">
+                Floating Social Icons
+            </ion-toggle>
+            <br />
+            <input type="text" ng-model="appcreate.url" placeholder="Social Share URL" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:16px; padding-right:10%;">
+                <br />
+            <div align="center" style="padding:0">
+            <button class="button icon-right ion-ios7-arrow-up" ng-class="button_color" ng-click="showActionsheet()">Bar Color</button>
+            </div>
+            <br />
+            <div style="margin:auto;width:80%;">
+                <img src="img/line.png" style="width:100%;height:auto;">
+            </div>
+            
+            
+
+            <br />
+            <div style="width:100%;float:left;">
+                      <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+                      <div style="width:40%;float:left;">
+                        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+                      </div>
+                      <div style="width:30%;float:right;">
+                <button class="button button-clear" ng-click="createAppFtn();" ><img src="img/save.png" style="width:52px;height:29px;"/></button>
+              </div>
+            </div>
+          </div>
+
+        </ion-content>
+      </ion-view>
+    </script>
+
+
+    <script id="addButton.html" type="text/ng-template">
+        <ion-view>
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear" ng-click="addchapterBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{Title}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;"  >
+                    <br />
+                    <div style="padding:2% 2% 2% 2%;">
+                     <div class="row">
+                        <div class="col col-20">
+                            <div class="file-input-wrapper1" >
+                                <button class="btn-file-input1"></button>
+                                <input type="file" id="buttonImage" />
+                            </div>
+                        </div>
+                        <div class="col col-80">          
+                            <input type="text" placeholder="Enter New Listing Title"  ng-model="chaptercreate.title" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                        </div>
+                       
+                    </div>
+                    <div style="margin:auto;width:90%;">
+                        <img src="img/line.png" style="width:100%;height:auto;">
+                    </div>      
+                    <br />
+
+                    <div style="width:100%;float:left;">
+                      <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+                      <div style="width:40%;float:left;">
+                        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+                      </div>
+                      <div style="width:30%;float:right;">
+                            <button class="button button-clear" ng-click="buttonSubmitFtn('Add');" ><img src="img/save.png" style="width:52px;height:29px;"/></button>
+                      </div>
+                    </div>
+                  </div>  
+                </ion-content>
+        </ion-view >
+    </script>
+
+
+    <script id="editButton.html" type="text/ng-template">
+        <ion-view>
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear" ng-click="addchapterBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{Title}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;"  >
+                    <br />
+                    <div style="padding:0% 0% 0% 0%;">
+                      <div class="list" style="padding:2% 2% 2% 2%;">
+                        <div class="item item-avatar-right">
+                          <img id="imageShow" src="" />
+                          <h2>Current Image</h2>
+                        </div>
+                      </div>
+                    
+                    <div class="row">
+                        <div class="col col-20">
+                            <div class="file-input-wrapper1" >
+                                <button class="btn-file-input1"></button>
+                                <input type="file" id="buttonImage" />
+                            </div>
+                        </div>
+                        <div class="col col-80">          
+                            <input type="text" placeholder="Enter New Listing Title"  ng-model="chaptercreate.title" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                        </div>
+                    </div>
+
+                    <div style="margin:auto;width:90%;">
+                        <img src="img/line.png" style="width:100%;height:auto;">
+                    </div>      
+                    <br />
+                    <div style="width:100%;float:left;">
+                      <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+                      <div style="width:40%;float:left;">
+                        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+                      </div>
+                      <div style="width:30%;float:right;">
+                            <button class="button button-clear" ng-click="buttonSubmitFtn('Edit');" ><img src="img/save.png" style="width:52px;height:29px;"/></button>
+                          </div>
+                      </div>
+                    </div>
+                </ion-content>
+        </ion-view>
+    </script>
+
+
+    <script id="addElement.html" type="text/ng-template">
+        <ion-view>
+
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear " ng-click="addcontentBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{appChapter}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;"  style="background-image:url(img/bg2.png);background-size:100% 100%;color:white;">
+                  
+                  <div style="padding:5% 5% 5% 5%;">
+                    
+                    <input type="text" placeholder="Enter Info Title" id="elementTitle" ng-model="contentCreate.elementTitle" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                    
+                    <br />
+                    
+                    <textarea ui-tinymce="tinymceOptions" ng-model="contentCreate.elementText" placeholder="Add Page Content ..." style="width:100%;height:auto;" ></textarea>
+
+                    <br />
+                    
+                    <input type="text" placeholder="Enter Price" id="elementPrice" ng-model="contentCreate.elementPrice" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                    
+                    
+                    <br />
+                   
+                    
+                    <div class="row" style="padding:0">
+                    <div class="col col-45"  style="padding:0">
+                    <select ng-model="contentCreate.elementAdditional_field" class="styled-select" style="-webkit-appearance: none;border:none;background-image:url(img/dropdown.png);background-size:100% 100%;width:100%;">
+                    <option value="">Type</option>
+                    <option value="Sale">Sale</option>
+                    <option value="Rent">Rent</option>
+                    </select>
+                    </div>
+                     <div class="col col-10"  style="padding:0">
+                     </div>
+                    <div class="col col-45" style="padding:0; float:right;">
+                    <select ng-model="contentCreate.elementHousecondition" class="styled-select" style="-webkit-appearance: none;border:none;background-image:url(img/dropdown.png);background-size:100% 100%;width:100%;">
+                    <option value="">Condition</option>
+                    <option value="New">New</option>
+                    <option value="Old">Old</option>
+                    </select>
+                    </div>
+                    </div>
+                   
+                    
+                    <tags-input ng-model="contentCreate.elementTag"></tags-input>
+                    
+                    
+                    <br />
+                    
+                    <input type="text" placeholder="Enter Square Feet" id="elementSquarefeet" ng-model="contentCreate.elementSquarefeet" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                    
+                    
+                    <br />
+                    
+                    <textarea ng-model="contentCreate.elementAddress" placeholder="Enter Address" style="padding: 10px;background-image:url(img/text-box.png);background-size:100% 100%;width:100%;height:100px;" ></textarea>
+                    
+                    <br />
+                    
+                    
+                    <input name="image" type="file" id="imageSelect" ng-hide="true" accept="image/*;capture=camera" />
+
+                    <div class="list">
+                      <div ng-repeat="item in buttonDeleteArray" class="item item-avatar item-button-right" >
+                      <img src={{item.url}} style="z-index:-1;"/>
+                        <button class="button button-assertive button-outline" ng-click="buttonDeletevideo(item.id);">
+                          <i class="icon ion-trash-a " ></i>
+                        </button>
+                      </div>
+                    </div>
+
+
+                <div style="width:100%;">
+                    <div style="width:45%;float:left;" ng-click="videoUploadFtn();">
+                        <img src="img/btn_image.png" style="width:50%;float:right;" />
+                    </div>
+                    <div style="width:10%;float:left;">
+                        <div style="opacity:0;">OR</div>
+                    </div>
+                    <div style="width:45%;float:left;" ng-click="agentUploadFtn();">
+                        <img src="img/btn_contact.png" style="width:50%;float:left;"/>
+                    </div>
+                </div>
+                 <br />
+                  <br />
+                   <br />
+                    <br />
+                   <div style="width:100%;">
+                   <h4>Agent List</h4>
+                      <ul class="list" style="padding:0;">
+                      
+                      <li class="item" ng-repeat="agentslist in agentslists" style="padding:0;">
+                      <div class="row" style="padding:0;">
+                      <div class="col">
+                     <img src={{agentavatar(agentslist.avatar)}} style="width:60px; height:60px;"/>
+                      </div>
+                      <div class="col col-75">
+                     
+                      <div class="item item-text-wrap" style="font-size:16px;padding:5px;">
+                      <i class="icon ion-person"><img src="img/split.png"/> {{agentslist.fullname}}</i>
+                      </div>
+                      <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                      <i class="icon ion-email"><img src="img/split.png"/> {{agentslist.email}}</i>
+                      </div>
+                      <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                      <i class="icon ion-ios7-telephone"><img src="img/split.png"/> {{agentslist.phone}}</i>
+                      </div>
+                      
+                      </div>
+                      </div>
+                      
+                      
+                      </li>
+                      
+                      </ul>
+                     </div>
+                      
+
+                    <div style="margin:auto;width:80%;">
+                        <img src="img/line.png" style="width:100%;height:auto;">
+                    </div>
+
+                    <br />
+                    <div style="width:100%;float:left;">
+                      <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+                      <div style="width:40%;float:left;">
+                        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+                      </div>
+                      <div style="width:30%;float:right;">
+                        <button class="button button-clear" ng-click="elementCreateSubmitFtn();">
+                          <img src="img/save.png" style="width:52px;height:29px;"/>
+                        </button>
+                      </div>
+
+                    </div>
+                    <br />
+
+                  </div>
+
+                  
+                </ion-content>
+        </ion-view>
+    </script>
+
+
+    <script id="new_video.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar align-title="center" class="bar bar-header" ng-class="bar_color">
+        <h1 class="title" style="font-size:16px;">{{appChapter}}</h1>
+        <button class="button button-clear " ng-click="videoModal.hide();"><i class="icon ion-close-circled"></i></button>
+                  
+        </ion-header-bar>
+         <ion-content style="padding:1% 25% 2% 25%;">
+        <div style="padding:5% 5% 5% 5%;">
+        <div style="margin:auto;width:40%;">
+        
+        <div class="file-input-wrapper6">
+        <button class="btn-file-input6"></button>
+        <input type="file" id="images"/>
+        </div>
+        
+        </div>
+        
+            </div>
+            <div class="padding">
+              <input type="submit" class="button button-block positive" ng-class="button_color" value="Create" ng-click="create_video()">
+            </div>
+          <br />
+        </ion-content>
+      </div>
+    </script>
+    
+    <script id="agentdetail.html" type="text/ng-template">
+        <div class="modal">
+        <ion-header-bar align-title="center" class="bar bar-header" ng-class="bar_color">
+        <h1 class="title" style="font-size:16px;">Agent Details</h1>
+        <button class="button button-clear " ng-click="agentdetailModal.hide();"><i class="icon ion-close-circled"></i></button>
+        </ion-header-bar>
+         <ion-content style="padding:1% 25% 2% 25%;">
+         <br />
+         <br />
+        <div class="padding"  align="center">
+        <img src="{{agentavatar(avatar)}}" style="height:100px; width:100px; border-radius:4px;">
+        </div>
+        <div class="padding" align="left">
+         <div class="padding" align="left" style="background-image:url(img/name1.png);background-size:100% 100%;font-size:20px; padding-left:25%; padding-top:7%; height:62px; margin-bottom:2px;">{{name}}
+         </div>
+         
+         <div class="padding" align="left" style="background-image:url(img/mail1.png);background-size:100% 100%;font-size:20px; padding-left:25%; padding-top:7%; height:62px; margin-bottom:2px;">{{email}}
+         </div>
+         
+         <div class="padding" align="left" style="background-image:url(img/phone1.png);background-size:100% 100%;font-size:20px; padding-left:25%; padding-top:7%; height:62px; margin-bottom:2px;">{{phone}}
+         </div>
+                <br />
+        </ion-content>
+        </div>
+    </script>
+    
+    
+    <script id="addnew_agent.html" type="text/ng-template">
+        <div class="modal">
+        <ion-header-bar align-title="center" class="bar bar-header" ng-class="bar_color">
+        <h1 class="title" style="font-size:16px;">{{appChapter}}</h1>
+        <button class="button button-clear " ng-click="addagentModal.hide();"><i class="icon ion-close-circled"></i></button>
+        </ion-header-bar>
+         <ion-content style="padding:1% 25% 2% 25%;">
+        <div class="padding"  align="center">
+        
+        <div class="file-input-wrapper5">
+        <button class="btn-file-input5" ></button>
+        <input type="file" id="tst" />
+        </div>
+        <br />
+        <input type="text" class="fname" ng-change="fncng(fname)" ng-model="fname" placeholder="First Name" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+        <br />
+        <input type="text" class="lname" ng-change="lncng(lname)" ng-model="lname" placeholder="Last Name" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+        <br />
+        <input type="text" class="email" ng-change="emcng(email)" ng-model="email" placeholder="Email" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+        <br />
+        <input type="text" class="phone" ng-model="phone" ng-change="phcng(phone)" placeholder="Phone No" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+        <br />
+        <div style="width:40%;float:left;">
+        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+        </div>
+        </div>
+        <div class="padding" align="right">
+        
+        <button class="button button-small button-balanced" ng-click="addnewagentFtn()">
+      &nbsp;&nbsp;Save&nbsp;&nbsp;
+        </button>
+        
+        </div>
+        <br />
+        </ion-content>
+        </div>
+        </script>
+   
+    
+    <script id="new_agent.html" type="text/ng-template">
+        <div class="modal">
+        <ion-header-bar align-title="center" class="bar bar-header" ng-class="bar_color">
+        <h1 class="title" style="font-size:16px;">{{appChapter}}</h1>
+        <button class="button button-clear " ng-click="agentModal.hide();"><i class="icon ion-close-circled"></i></button>
+        </ion-header-bar>
+        <div class="bar bar-subheader">
+        <div align="right">
+        <button class="button button-small button-balanced" ng-click="addnewagentshowFtn()">
+        Add New Agent
+        </button>
+       
+        </div>
+        </div>
+         <ion-content style="padding:1% 25% 2% 25%;" style="margin-top:14%;">
+        <br />
+    <br />
+    <br />
+    <br />
+        <div class="list" ng-repeat="agent in agents" style="padding:0px;margin:0px;">
+        
+        <div class="item item-button-right" style="padding:0px;">
+        <label class="checkbox" style="padding:4px;">
+        <input type="checkbox" checklist-model="addAgent.id" checklist-value="agent.id" >
+        </label>
+        <button class="button button-clear" ng-click="editagent(agent.id,agent.avatar,agent.fullname,agent.email,agent.phone)">
+        <i class="icon ion-edit"></i>
+        </button>
+        
+        <div class="row" style="padding-top:8px;">
+        <div class="col" style="font-size:16px;padding:0px;">
+        <img src={{agentavatar(agent.avatar)}} style="width:60px; height:60px;"/>
+        </div>
+        <div class="col col-75" style="font-size:16px;padding:0px;">
+        <div class="item item-text-wrap" style="font-size:16px;padding:5px;">
+        <i class="icon ion-person"><img src="img/split.png"/> {{agent.fullname}}</i>
+        </div>
+        <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+        <i class="icon ion-email"><img src="img/split.png"/> {{agent.email}}</i>
+        </div>
+        <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+        <i class="icon ion-ios7-telephone"><img src="img/split.png"/> {{agent.phone}}</i>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        
+        
+        <div class="padding" align="right">
+        
+        <button class="button button-small button-balanced" ng-click="addagentFtn()">
+        &nbsp;&nbsp;Save&nbsp;&nbsp;
+        </button>
+        </div>
+        
+        <br />
+        </ion-content>
+        </div>
+        </script>
+
+
+    <script id="new_audio.html" type="text/ng-template">
+      <div class="modal">
+        <ion-header-bar align-title="center" class="bar bar-header" ng-class="bar_color">
+        <h1 class="title">{{appChapter}}</h1>
+        <button class="button button-clear " ng-click="audioModal.hide();"><i class="icon ion-close-circled"></i></button>
+        </ion-header-bar>
+         <ion-content style="padding:1% 25% 2% 25%;">
+          <div class="list list-inset">
+              <label class="item item-input" ng-hide="true">
+                <input type="text" name="title" placeholder="Type Audio Title" ng-model="audioText.title" required>
+              </label>
+              
+              <label class="item item-input">
+                <span class="input-label">Audio</span>
+                <input type="file" name="audio"  >
+              </label>
+              <label class="item item-input">
+                <span class="input-label" style="font-weight:normal;">Thumbnail</span>
+                <input type="file" name="audio_thumb"  >
+              </label>
+            </div>
+            <div class="padding">
+              <input type="submit" class="button button-block positive" ng-class="button_color" value="Create" ng-click="create_audio()">
+            </div>
+          <br />
+        </ion-content>
+      </div>
+    </script>
+
+
+    <script id="appWall.html" type="text/ng-template">
+      <ion-view>
+
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{appTitle}}</h1>
+                  <div class="buttons">
+                    <button class="button button-clear" ng-click="appwallSettings();"><i class="icon ion-ios7-gear-outline"></i></button>
+                  </div>
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;"  has-header="true" >
+                                                      
+                          <div class="bar bar-header item-input-inset" >
+                              <label class="item-input-wrapper">
+                                  <input type="text" id="postmessage" placeholder="Your message goes here....">
+                              </label>
+                              <button id="textPostMgs" class="button button-clear button-assertive" onclick="javascript:postmessageFun();" >
+                                  <img src="img/btn_post.png" style="width:75px;height:auto;"/>
+                              </button>
+                          </div>    
+                            
+                              
+                          <div id="appwallListview" style="padding:1px;">
+                          </div>
+                            
+                 </ion-content>
+
+      </ion-view>
+  </script>
+    
+    <script id="appWall1.html" type="text/ng-template">
+        <ion-view>
+        
+        <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+        <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+        <h1 class="title">{{appTitle}}</h1>
+        
+        </ion-header-bar>
+        
+         <ion-content style="padding:1% 25% 2% 25%;"  has-header="true" >
+        
+        
+        <div id="appwallListview" style="padding:1px;">
+        </div>
+        
+        </ion-content>
+        
+        </ion-view>
+        </script>
+
+
+  <script id="buttonAppWall.html" type="text/ng-template">
+      <ion-view >
+
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{appTitle}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;" has-header="true" >
+                              
+                              <div class="bar bar-header item-input-inset" >
+                                <label class="item-input-wrapper">
+                                  <input type="text" id="Buttonpostmessage" placeholder="Your message goes here....">
+                                </label>
+                                <button id="textPostMgs" class="button button-clear button-assertive" onclick="javascript:ButtonpostmessageFun();" >
+                                  <img src="img/btn_post.png" style="width:75px;height:auto;"/>
+                                </button>
+                              </div>
+
+                              <div id="ButtonappwallListview" style="padding:1px;">
+                              </div>
+
+                 </ion-content>
+
+      </ion-view>
+
+  </script>
+  
+  <script id="buttonAppWall1.html" type="text/ng-template">
+      <ion-view >
+      
+      <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+      <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+      <h1 class="title">{{appTitle}}</h1>
+      
+      </ion-header-bar>
+      
+       <ion-content style="padding:1% 25% 2% 25%;" has-header="true" >
+      
+      
+      <div id="ButtonappwallListview" style="padding:1px;">
+      </div>
+      
+      </ion-content>
+      
+      </ion-view>
+      
+      </script>
+
+
+
+  <script id="elementAppWall.html" type="text/ng-template">
+      <ion-view >
+
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{appTitle}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;" has-header="true" >
+
+                        <div class="bar bar-header item-input-inset">
+                            <label class="item-input-wrapper">
+                                <input type="text" id="Elementpostmessage" placeholder="Your message goes here....">
+                            </label>
+                            <button class="button button-clear button-assertive" onclick="javascript:ElementpostmessageFun();" >
+                                <img src="img/btn_post.png" style="width:75px;height:auto;"/>
+                            </button>
+                        </div>
+                              
+                        <div id="ElementappwallListview" style="padding:1px;">
+                        </div>
+
+                </ion-content>
+      </ion-view>
+
+  </script>
+  
+  <script id="elementAppWall1.html" type="text/ng-template">
+      <ion-view>
+      
+      <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+      <button class="button button-clear " ng-click="appwallBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+      <h1 class="title">{{appTitle}}</h1>
+      
+      </ion-header-bar>
+      
+       <ion-content style="padding:1% 25% 2% 25%;" has-header="true" >
+      
+      <div id="ElementappwallListview" style="padding:1px;">
+      </div>
+      
+      </ion-content>
+      </ion-view>
+      
+      </script>
+  
+</html>
+

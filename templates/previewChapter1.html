@@ -1,0 +1,149 @@
+<ion-view>
+    <ion-side-menus>
+        
+        <ion-side-menu-content>
+            <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+               <button class="button button-clear" ng-click="toggleLeft()"><img src="img/agents_menu.png" style="width:32px;height:32px;"/></button>
+                <h1 class="title">{{appTitle}}</h1>
+                <button class="button button-clear" ng-click="toggleRight()"><img src="img/app_menu.png" style="width:32px;height:32px;"/></button>
+                 <!--<button class="button button-icon icon ion-navicon" ng-click="toggleRight()"></button>
+                <div class="buttons">
+                    <button class="button button-clear" ng-click="goHome()"><i class="icon ion-ios7-home-outline"></i></button>
+                    <button class="button button-clear" ng-click="switchAppEditor()"><i class="icon ion-ios7-compose-outline"></i></button>
+                </div>-->
+            </ion-header-bar>
+             <ion-content style="padding:1% 25% 2% 25%;">
+
+             <p ng-hide="showfloat">
+          <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_fb.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="img/ic_twitter.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail1.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </p>
+                
+                    <ion-list ng-show='AppEditor' show-reorder='AppEditor' show-delete="AppEditor" >
+                        <div class="item item-divider item-button-right" align="center">
+                            {{appTitle}}
+                        </div>
+                        <ion-item ng-href="#/{{item.id}}/editButton" ng-repeat="item in items | filter:position" class="item-avatar item-button-right" >
+                            <img ng-src="{{item.image}}">
+                                
+                                <h2>{{item.title}}</h2>
+                                <ion-delete-button class="ion-trash-a" ng-click='deleteButton(item.id)'></ion-delete-button>
+                                <ion-reorder-button on-reorder="moveItem(item, $fromIndex, $toIndex)">
+                                    <i class="icon " ><img src="img/btn_drag.png" style="width:30px;height:30px;"/></i>
+                                </ion-reorder-button>
+                                </ion-item>
+                    </ion-list>
+                    
+                    <div class="row" ng-show="AppEditor">
+                        <div class="col col-50"></div>
+                        <div class="col col-50">
+                            <button class="button button-balanced" ng-click="newChapterGo();">+New Listing</button>
+                        </div>
+                    </div>
+                    
+                    
+                    <ion-list ng-hide="AppEditor">
+                        <div class="item item-image" style="height:120px; padding-left:0px; padding-right:0px; width:100%;">
+                            <img src="" ng-style="{ 'background-image': 'url(' + appImg + ')' }" style="height:175px;padding-left:0px;padding-right:0px; background-size: cover; background-repeat: no-repeat; background-position: center center;">
+                                </div>
+                        
+                        <div class="item item-divider" style="opacity: 0.7;padding-top:0px;padding-bottom:0px;height:58px;">
+                            <h2  align="center">{{appTitle}}</h2>
+                            <!--<button class="button button-assertive button-clear" ng-click="appwallgoFun();"><i class="icon"><img src="img/coments.png" style="width:25px;height:25px;"/></i></button>-->
+                            <h4 type="item-text-wrap" style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis;">{{appDesc}}</h4>
+                        </div>
+                        
+                        <!--<li ng-repeat="item in items" type="item-text-wrap" class="item item-avatar item-button-right" ng-click="chapterClickFtn(item.id,item.title);">
+                            <img src="{{item.image}}" >
+                                <h2 style="color:black;">{{item.title}}</h2>
+                                </li>-->
+                        
+                    </ion-list>
+                    
+                    <div ng-repeat="item in items" align="center" ng-click="chapterClickFtn(item.id,item.title);" style="width:50%; padding:0px;float:left; position:relative; margin:0px;">
+                        <div class="card" align="left" style="padding:0px;margin:4px; background-color:#f8f8f8;">
+                        <div class="row" style="padding-bottom:0px;">
+                            <div class="col  col-25"> <img src="{{item.image}}" style="width:40px; height:40px; align:left; border-radius:4px;"></div>
+                            <div class="col" style="margin-top:5%;padding-left:20px; align:left;" >{{item.title}}</div>
+                        </div>
+                        <button class="button button-block" ng-class="button_color" style="padding-top:0px;"><i class="icon ion-eye"></i>
+                            View
+                        </button>
+                            
+                    </div>
+                    </div>
+                    
+               
+            </ion-content>
+            <div align="center" style="position:fixed;bottom: 0;right:45%;" ng-show="showfloat">
+        <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396343749_facebook_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396344405_twitter_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+         <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail.png" alt="" style="width:32px;height:32px;"/></a>
+
+    </div>
+        </ion-side-menu-content>
+        
+        <ion-side-menu side="right">
+            <ion-view >
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                    <!--<button class="button button-clear" style="left:0%;" ng-click="listViewBack();"><i class="icon ion-log-in"></i></button>
+                    <button class="button button-clear button-assertive"  ng-click="gridCallFtn();"><img src="img/grid-view.png" style="margin-top:15%;width:25px;height:25px;"/></button>-->
+                    <h1 class="title">Realtors</h1>
+                    
+                </ion-header-bar >
+                 <ion-content>
+                    
+                    <ion-list>
+                        
+                        <ion-item ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left" style="color:white;" ng-click="listViewClickFtn(item.api_key,item.title,item.description,item.splash_image);">
+                            
+                            <img src="{{item.splash_image}}" >
+                                <h2 style="color:black;">{{item.title}}</h2>
+                                
+                               
+                                </ion-item>
+                        
+                    </ion-list>
+                    
+                    
+                    
+                </ion-content>
+                <ion-footer-bar class="bar bar-footer">
+                    <div style="margin-left:65%" ng-click="listViewBack();">
+                    <button class="button icon-left ion-ios7-person" ng-class="button_color">Admin</button>
+                    </div>
+                    </ion-footer-bar >
+            </ion-view>
+            
+            
+
+        </ion-side-menu>
+        
+        <ion-side-menu side="left">
+            <ion-view >
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                   
+                    <h1 class="title">Menu</h1>
+                    
+                </ion-header-bar >
+                 <ion-content>
+                <ul class="list">
+                    <li class="item item-icon-left" ng-click="agentgo();">
+                        <i class="icon ion-android-friends"></i>
+                       Agents List
+                    </li>
+                </ul>
+               </ion-content>
+            </ion-view>     
+        </ion-side-menu>
+        
+    </ion-side-menus>
+  	
+
+
+</ion-view>
+
+
+

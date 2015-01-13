@@ -1,0 +1,32 @@
+<!--
+  This template loads for the 'tab.adopt' state (app.js)
+-->
+<ion-view>
+  <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+      <h1 class="title">Realtors</h1>
+      
+  </ion-header-bar>
+   <ion-content style="padding:1% 25% 2% 25%;" >
+    <div class="list list-inset" >
+      <label class="item item-input "style="background-color:white;background-size:100% 100%;" >
+        <i class="icon "><img src="img/username.png" style="width:30px;height:30px;"/></i>
+        <input type="text" id="userId" placeholder="UserId" value="" style="">
+      </label>
+      <label class="item item-input" style="background-color:white;background-size:100% 100%;">
+        <i class="icon "><img src="img/password.png" style="width:30px;height:30px;"/></i>
+        <input type="password" id="password" placeholder="Password" value="" >
+      </label>
+      <button class="button button-full " style="background-color:#d6dbe6;background-size:100% 100%;" ng-click="loginFtn();" >
+        Login
+      </button>
+      <button class="button button-full icon-left ion-social-facebook" ng-click="fbLogin();" style="background-color:#335397;background-size:100% 100%;color:white;align:left">Log in with Facebook</button>
+      <button class="button button-full icon-left ion-social-twitter" ng-click="twitterLogin();" style="background-color:#00c7f7;background-size:100% 100%;color:white;align:left">Log in with Twitter</button>
+      <button class="button button-full icon-left ion-social-googleplus" ng-click="googleLogin();" style="background-color:#FE2E2E;background-size:100% 100%;color:white;">Log in with Google+</button>
+      <button class="button button-full" style="background-color:#d6dbe6;background-size:100% 100%;" ng-click="registerPageCallFtn();">Create an Account</button>
+
+    </div>
+  </ion-content>
+</ion-view>
+
+
+

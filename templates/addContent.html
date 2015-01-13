@@ -1,0 +1,142 @@
+
+<ion-view >
+
+                <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+                  <button class="button button-clear " ng-click="addcontentBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+                  <h1 class="title">{{appChapter}}</h1>
+                  
+                </ion-header-bar>
+
+                 <ion-content style="padding:1% 25% 2% 25%;"  style="background-image:url(img/bg2.png);background-size:100% 100%;color:white;">
+                  
+                  <div style="padding:5% 5% 5% 5%;">
+                    
+
+                    <input type="text" placeholder="Enter Info Title" id="elementTitle" ng-blur="change()" ng-model="contentCreate.elementTitle" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                    
+                   
+                    <br />
+                    
+                    <textarea ui-tinymce="tinymceOptions" ng-model="contentCreate.elementText" placeholder="Add Page Content ..."   >{{contentCreate.elementText}}</textarea>
+                   <br />
+                   
+                   <input type="text" placeholder="Enter Price" id="elementPrice" ng-model="contentCreate.elementPrice" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                   
+                   
+                   <br />
+                   
+                   <div class="row" style="padding:0">
+                       <div class="col col-45"  style="padding:0">
+                           <select ng-model="contentCreate.elementAdditional_field" class="styled-select" style="-webkit-appearance: none;border:none;background-image:url(img/dropdown.png);background-size:100% 100%;width:100%;">
+                               <option value="">Type</option>
+                               <option value="Sale">Sale</option>
+                               <option value="Rent">Rent</option>
+                           </select>
+                       </div>
+                       <div class="col col-10"  style="padding:0">
+                       </div>
+                       <div class="col col-45" style="padding:0; float:right;">
+                           <select ng-model="contentCreate.elementHousecondition" class="styled-select" style="-webkit-appearance: none;border:none;background-image:url(img/dropdown.png);background-size:100% 100%;width:100%;">
+                               <option value="">Condition</option>
+                               <option value="New">New</option>
+                               <option value="Old">Old</option>
+                           </select>
+                       </div>
+                   </div>
+                   
+                   
+                   <tags-input ng-model="contentCreate.elementTag"></tags-input>
+                   
+                   
+                   <br />
+                   
+                   <input type="text" placeholder="Enter Square Feet" id="elementSquarefeet" ng-model="contentCreate.elementSquarefeet" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;"/>
+                   
+                   
+                   <br />
+                   
+                   <textarea ng-model="contentCreate.elementAddress" placeholder="Enter Address" style="padding: 10px;background-image:url(img/text-box.png);background-size:100% 100%;width:100%;height:100px;" ></textarea>
+                   
+                   <br />
+                   
+                   
+                    <input name="image" type="file" id="imageSelect1" ng-hide="true" />
+
+                    <div class="list">
+                        <div ng-repeat="item in buttonDeleteArray" class="item item-avatar item-button-right" >
+                            <img src={{item.url}} style="z-index:-1;"/>
+                                <button class="button button-assertive button-outline" ng-click="buttonDeletevideo(item.id);">
+                                    <i class="icon ion-trash-a " ></i>
+                                </button>
+                        </div>
+                    </div>
+
+<div style="width:100%;">
+    <div style="width:45%;float:left;" ng-click="videoUploadFtn();">
+        <img src="img/btn_image.png" style="width:50%;float:right;" />
+    </div>
+    <div style="width:10%;float:left;">
+        <div style="opacity:0;">OR</div>
+    </div>
+    <div style="width:45%;float:left;" ng-click="agentUploadFtn();">
+        <img src="img/btn_contact.png" style="width:50%;float:left;"/>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div style="width:100%;">
+    <h4>Agent List</h4>
+    <ul class="list" style="padding:0;">
+        
+        <li class="item" ng-repeat="agentslist in agentslists" style="padding:0;">
+            <div class="row" style="padding:0;">
+                <div class="col">
+                    <img src={{agentavatar(agentslist.avatar)}} style="width:60px; height:60px;"/>
+                </div>
+                <div class="col col-75">
+                    
+                    <div class="item item-text-wrap" style="font-size:16px;padding:5px;">
+                        <i class="icon ion-person"><img src="img/split.png"/> {{agentslist.fullname}}</i>
+                    </div>
+                    <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                        <i class="icon ion-email"><img src="img/split.png"/> {{agentslist.email}}</i>
+                    </div>
+                    <div class="item item-text-wrap" style="font-size:16px; padding:5px;">
+                        <i class="icon ion-ios7-telephone"><img src="img/split.png"/> {{agentslist.phone}}</i>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </li>
+        
+    </ul>
+</div>
+
+
+                    <br />
+                    <div style="margin:auto;width:80%;">
+                        <img src="img/line.png" style="width:100%;height:auto;">
+                    </div>
+                    
+                    <br />
+                    <div style="width:100%;float:left;">
+                      <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+                      <div style="width:40%;float:left;">
+                        <img src="img/required-field.png" style="width:100%;height:auto;"/>
+                      </div>
+                      <div style="width:30%;float:right;">
+                        <button class="button button-clear" ng-click="elementCreateSubmitFtn();" ><img src="img/save.png" style="width:52px;height:29px;"/></button>
+                      </div>
+
+                    </div>
+                  </div>
+                </ion-content>
+                
+        </ion-view>
+
+
+

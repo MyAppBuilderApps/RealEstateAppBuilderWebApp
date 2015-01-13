@@ -1,0 +1,53 @@
+<ion-view >
+  <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+    <button class="button button-clear" style="left:0%;" ng-click="listViewBack();"><i class="icon ion-log-out"></i></button>
+    <!--<button class="button button-clear button-assertive"  ng-click="gridCallFtn();"><img src="img/grid-view.png" style="margin-top:15%;width:25px;height:25px;"/></button>-->
+      <h1 class="title">Realtors</h1>
+      <div class="buttons">
+        <button class="button button-clear" ng-click="createBook();"><i class="icon ion-ios7-paper-outline"></i></button>
+        <button class="button button-clear" ng-click="EditBook();"><i class="icon ion-ios7-compose-outline"></i></button>
+      </div>
+  </ion-header-bar >  
+   <ion-content style="padding:1% 25% 2% 25%;"  >
+  
+    <ion-list ng-hide="AppEditor">
+        
+        <ion-item ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left" style="color:white;" ng-click="listViewClickFtn(item.api_key,item.title);">
+        
+          <img src="{{item.splash_image}}" >
+          <h2 style="color:black;">{{item.title}}</h2>
+         
+          <!--<ion-option-button ng-click="previewApp(item.api_key,item.title)" >
+            <img src="img/preview.png" style="width:35px;margin-top:50%;"/>
+          </ion-option-button>-->
+
+          <ion-option-button class="button button-calm button-outline" ng-click="editApp(item.api_key,item.title,item.description,item.splash_image)" >
+            <!--<img src="img/edit.png" style="width:35px;margin-top:50%;" />--><i class="icon ion-edit" style="margin-top:50%;"></i>
+          </ion-option-button>
+          
+          <ion-option-button class="button button-assertive button-outline" ng-click="deleteApp(item.api_key,item.title)" >
+            <!--<img src="img/close.png" style="width:35px;margin-top:50%;"/>--><i class="icon ion-trash-a" style="margin-top:50%;"></i>
+          </ion-option-button>
+        </ion-item>
+
+    </ion-list>  
+    
+    <ul class="list" ng-show="AppEditor">
+        
+        <li ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left item-button-right" style="color:white;" >
+        
+          <img src="{{item.splash_image}}" >
+          <h2 style="color:black;">{{item.title}}</h2>
+         
+          <div class="buttons" style="padding:0px; margin:0px;">
+                <button class="button button-assertive button-outline" ng-click="deleteApp(item.api_key,item)"><i class="icon ion-trash-a" style="padding:0px; margin:0px;"></i></button>
+                <button class="button  button-calm button-outline" ng-click="editApp(item.api_key,item.title,item.description,item.splash_image)" style="padding:0px; margin-right:0px;"><i class="icon ion-edit"></i></button>
+          </div>
+        </li>
+
+    </ul>
+    
+  </ion-content>
+</ion-view>
+
+

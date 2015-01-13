@@ -1,0 +1,36 @@
+<!--
+  This template loads for the 'tab.adopt' state (app.js)
+-->
+<ion-view>
+  <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+      <h1 class="title">Realtors</h1>
+      
+  </ion-header-bar>
+   <ion-content style="padding:1% 25% 2% 25%;" >
+   <div align="center">
+    <img src="img/Real_Estate.png">
+  </div>
+    <div class="list list-inset" >
+      <label class="item item-input "style="background-color:white;background-size:100% 100%;" >
+        <i class="icon "><img src="img/username.png" style="width:30px;height:30px;"/></i>
+        <input type="text" id="userId" placeholder="UserId" value="" style="">
+      </label>
+      <label class="item item-input" style="background-color:white;background-size:100% 100%;">
+        <i class="icon "><img src="img/password.png" style="width:30px;height:30px;"/></i>
+        <input type="password" id="password" placeholder="Password" value="" >
+      </label>
+      <button class="button button-full " style="background-color:#d6dbe6;background-size:100% 100%;" ng-click="loginFtn();" >
+        Login
+      </button>
+
+      <button class="button button-full " style="background-color:#d6dbe6;background-size:100% 100%;" ng-click="cancelFtn();" >
+        Cancel
+      </button>
+      
+
+    </div>
+  </ion-content>
+</ion-view>
+
+
+

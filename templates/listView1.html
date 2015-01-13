@@ -1,0 +1,29 @@
+<ion-view >
+  <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+    <!--<button class="button button-clear" style="left:0%;" ng-click="listViewBack();"><i class="icon ion-log-in"></i></button>
+    <button class="button button-clear button-assertive"  ng-click="gridCallFtn();"><img src="img/grid-view.png" style="margin-top:15%;width:25px;height:25px;"/></button>-->
+      <h1 class="title">Realtors</h1>
+      
+  </ion-header-bar >  
+   <ion-content style="padding:1% 25% 2% 25%;"  >
+  
+    <ion-list>
+        
+        <ion-item ng-repeat="item in appKey" type="item-text-wrap" class="item item-avatar-left" style="color:white;" ng-click="listViewClickFtn(item.api_key,item.title,item.description,item.app_image);">
+        
+          <img src="{{item.app_image}}" >
+          <h2 style="color:black;">{{item.title}}</h2>
+         
+         
+        </ion-item>
+
+    </ion-list>  
+    <ion-footer-bar  class="bar bar-footer" ng-click="listViewBack();">
+        <h1 class="title">Admin</h1>
+    </ion-footer-bar >
+    
+    
+  </ion-content>
+</ion-view>
+
+

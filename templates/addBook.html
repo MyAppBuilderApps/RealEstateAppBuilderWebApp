@@ -1,0 +1,66 @@
+<ion-view >
+
+        <ion-header-bar  class="bar bar-header" ng-class="bar_color">
+            <button class="button button-clear" ng-click="addBookBack();"><i class="icon ion-ios7-arrow-left"></i></button>
+            <h1 class="title">Add App</h1>
+            
+          
+        </ion-header-bar>
+
+         <ion-content style="padding:1% 25% 2% 25%;"  id="scrollable" style="background-image:url(img/bg2.png);background-size:100% 100%;" >
+          <br />
+          
+          <div style="padding:5% 5% 5% 5%;">
+            <div style="margin:auto;width:40%;">
+              
+                 <div class="file-input-wrapper" >
+                  <button class="btn-file-input"></button>
+                  <input type="file" id="bookImage" />
+                </div>
+              
+            </div>
+            <br />
+            <input type="text" id="gridBookTitle" ng-model="appcreate.gridBookTitle" placeholder="Enter Real Estate Title" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:20px; padding-right:10%;">
+            <br />
+            <!--ng-model="appcreate.gridBookDesc" -->
+            <textarea style="padding: 10px;background-image:url(img/text-box.png);background-size:100% 100%;" placeholder="Info/Description" ng-model="appcreate.gridBookDesc" id="gridBookDesc" ></textarea>
+            
+            <br />
+            <ion-toggle ng-model="appcreate.fssi">
+                Floating Social Icons
+            </ion-toggle>
+            <br />
+            <input type="text" ng-model="appcreate.url" placeholder="Social Share URL" style="background-image:url(img/text-field.png);background-size:100% 100%;font-size:16px; padding-right:10%;">
+                <br />
+            <div align="center" style="padding:0">
+                <button class="button icon-right ion-ios7-arrow-up" ng-class="button_color" ng-click="showActionsheet()">Bar Color</button>
+            </div>
+            <br />
+            <div style="margin:auto;width:80%;">
+                <img src="img/line.png" style="width:100%;height:auto;">
+            </div>
+
+            <!--<textarea ui-tinymce="tinymceOptions" ng-model="mypost" placeholder="Add Page Content ..."  style="width:100%;height:auto;" ></textarea>-->
+
+            <br />
+            <div style="width:100%;float:left;">
+              <div style="width:30%;float:left;"><font style="opacity:0;">hello</font></div>
+              <div style="width:40%;float:left;">
+                  <img src="img/required-field.png" style="width:100%;height:auto;"/>
+              </div>
+              <div style="width:30%;float:right;">
+                <button class="button button-clear" ng-click="createAppFtn();"><img src="img/save.png" style="width:52px;height:29px;"/></button>
+              </div>
+            </div>
+          </div>
+
+        </ion-content>
+
+        
+
+</ion-view >
+
+
+
+
+
