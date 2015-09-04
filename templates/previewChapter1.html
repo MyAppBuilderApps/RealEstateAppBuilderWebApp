@@ -77,12 +77,20 @@
                     
                
             </ion-content>
-            <div align="center" style="position:fixed;bottom: 0;right:45%;" ng-show="showfloat">
-        <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396343749_facebook_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
-          <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396344405_twitter_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
-         <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail.png" alt="" style="width:32px;height:32px;"/></a>
 
+             <div class="bar bar-footer" ng-show="showfloat">
+                <h2 class="title">
+                   <a href="http://www.facebook.com/sharer.php?u={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396343749_facebook_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+                  <a href="http://twitter.com/share?url={{float1}}&text=To Download This App Click Here {{appTitle}}" target="_blank"><img src="http://kopepasah.com.s3.amazonaws.com/assets/codepen.io/1396344405_twitter_circle_color.png" alt="" style="width:32px;height:32px;"/></a>
+                 <a href="mailto:?Subject={{appTitle}}&Body=To%20Download%20This%20App%20Click%20This%20Link!%20 {{float1}}"><img src="img/ic_mail.png" alt="" style="width:32px;height:32px;"/></a>
+               <img align="right" src="img/myappbuilder.png" alt="" style="width:130px;height:40px;position:fixed;bottom: 0;right:26%;"/>
+                </h2>
+            </div>
+
+    <div align="center" style="position:fixed;bottom: 0;right:40%;" ng-hide="showfloat">
+        <img src="img/myappbuilder.png" alt="" style="width:130px;height:40px;"/>
     </div>
+
         </ion-side-menu-content>
         
         <ion-side-menu side="right">
@@ -111,7 +119,10 @@
                     
                 </ion-content>
                 <ion-footer-bar class="bar bar-footer">
-                    <div style="margin-left:65%" ng-click="listViewBack();">
+
+                        <img align="left" src="img/myappbuilder.png" alt="" style="width:130px;height:40px;"/>
+
+                    <div style="margin-left:20%" ng-click="listViewBack();">
                     <button class="button icon-left ion-ios7-person" ng-class="button_color">Admin</button>
                     </div>
                     </ion-footer-bar >
